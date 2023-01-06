@@ -4,6 +4,15 @@ type Query {
 }
 
 type Post {
+   id: String!
    title: String
+   body: String
+   comments: [Comment]
+}
+
+type Comment {
+   id: String!
+   name: String
+   email: String
    body: String
 }
