@@ -4,6 +4,7 @@ import { buildSchema } from 'graphql';
 const expressPlayground = require('graphql-playground-middleware-express')
   .default
 import fs from 'fs';
+import queries from './resolvers/Queries';
 
 const schemaString = fs.readFileSync('./src/schemas/schema.graphql', 'utf8');
 
@@ -18,15 +19,19 @@ app.get('/playground', expressPlayground({ endpoint: '/graphql' }))
 
 const schema = buildSchema(schemaString);
 
-const root = {
-  hello: () => {
-    return 'Hello world!';
-  },
+// const root = {
+//   hello: () => {
+//     return 'Hello world!';
+//   },
+// };
+
+const rootValue = {
+  ...queries,
 };
 
 app.use('/graphql', graphqlHTTP({
   schema: schema,
-  rootValue: root,
+  rootValue: rootValue,
   graphiql: true,
 }));
 
