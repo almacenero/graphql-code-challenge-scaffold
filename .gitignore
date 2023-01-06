@@ -1,3 +1,7 @@
 node_modules
 
 setup/mockData.json
+
+binaryMongo/*
+
+src/database.ts
