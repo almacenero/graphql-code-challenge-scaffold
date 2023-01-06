@@ -19,12 +19,6 @@ app.get('/playground', expressPlayground({ endpoint: '/graphql' }))
 
 const schema = buildSchema(schemaString);
 
-// const root = {
-//   hello: () => {
-//     return 'Hello world!';
-//   },
-// };
-
 const rootValue = {
   ...queries,
 };

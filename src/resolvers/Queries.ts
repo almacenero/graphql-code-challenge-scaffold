@@ -1,6 +1,14 @@
+import {Post}from "./../models/Post"
 const hello = () => {
     return "Hello World"
 }
 
-export default {hello}
+const posts = async () => {
+   const posts = await Post.find()
+   console.log("posts--->", posts)
+   //need pagination
+   return posts
+}
+
+export default {hello, posts}
 
