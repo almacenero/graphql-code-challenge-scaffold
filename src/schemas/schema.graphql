@@ -1,6 +1,5 @@
 type Query {
-    hello: String
-    posts: [Post]
+    posts(page: Int): PostConnection!
 }
 
 type Post {
@@ -15,4 +14,20 @@ type Comment {
    name: String
    email: String
    body: String
+}
+
+
+type PostConnection {
+  edges: [PostEdge]!
+  pageInfo: PageInfo!
+}
+
+type PostEdge {
+  cursor: String!
+  node: Post!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  endCursor: String
 }
