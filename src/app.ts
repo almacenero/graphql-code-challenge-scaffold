@@ -3,6 +3,9 @@ import { graphqlHTTP } from 'express-graphql';
 import { buildSchema } from 'graphql';
 const expressPlayground = require('graphql-playground-middleware-express')
   .default
+import fs from 'fs';
+
+const schemaString = fs.readFileSync('./src/schemas/schema.graphql', 'utf8');
 
 const app = express();
 app.use(express.json());
@@ -13,11 +16,7 @@ app.get('/', (req, res) => {
 
 app.get('/playground', expressPlayground({ endpoint: '/graphql' }))
 
-const schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
+const schema = buildSchema(schemaString);
 
 const root = {
   hello: () => {
