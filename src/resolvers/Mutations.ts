@@ -4,18 +4,19 @@ import { PostItem } from "../dao/Post"
 import CommentItem from "../dao/Comment"
 import commentValidator from "../validatorsSchema/CommentValidator"
 import postValidator from "../validatorsSchema/postValidator"
+import newCommentArgument from "../dao/NewCommentArgument"
+import newPostArgument from "../dao/newPostArgument"
 
-const newComment = async (obj: any) => {
+const newComment = async (obj: newCommentArgument) => {
    const comment: CommentItem = obj.comment
 
    const {error} = commentValidator.validate(comment)
 
    if(error) {
-     console.log(error.message);
      throw new Error(error.message);
    } else {
     try {
-        const commentItem: any = await new Comment({
+        const commentItem = await new Comment({
             name: comment.name,
             email: comment.email,
             body: comment.body,
@@ -37,18 +38,17 @@ const newComment = async (obj: any) => {
   
 }
 
-const newPost = async (obj: any) => {
-    console.log("obj--->", obj)
+const newPost = async (obj: newPostArgument) => {
+    console.log("obje", obj)
     const post: PostItem = obj.post
 
     const {error} = postValidator.validate(post)
 
     if(error) {
-     console.log(error.message);
      throw new Error(error.message);
    } else {
    try {
-    const postItem: any = await new Post({
+    const postItem = await new Post({
         title: post.title,
         body: post.body,
        })

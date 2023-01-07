@@ -1,7 +1,7 @@
 export default interface CommentItem {
-    id: string
+    id?: string
     name: string
-    email: string,
-    body: string,
-    post_id: string 
+    email?: string,
+    body?: string,
+    post_id?: string 
 }

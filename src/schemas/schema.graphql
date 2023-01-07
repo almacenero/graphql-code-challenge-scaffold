@@ -40,7 +40,6 @@ input PostInput {
 
 type Query {
    posts(page: Int): PostConnection!
-   findPost(postId: String!): Post!
 }
 
 type Mutation {

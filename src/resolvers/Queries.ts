@@ -2,10 +2,12 @@ import {Post} from "./../models/Post"
 import { Comment } from "../models"
 import { PostItem } from "../dao/Post"
 import CommentItem from "../dao/Comment"
+import pageArgument from "../dao/PageArgument"
 
 const POSTS_BY_PAGE = 10
 
-const posts = async (obj: any) => {
+const posts = async (obj: pageArgument) => {
+    console.log("obje", obj)
    const skip = (obj.page - 1) * POSTS_BY_PAGE
 
    const posts: any = await Post.find()
@@ -28,7 +30,7 @@ const posts = async (obj: any) => {
 
    const resultPosts = await Promise.all(newPosts)
    return {
-    edges: resultPosts.map((post: any) => ({
+    edges: resultPosts.map((post) => ({
         cursor: post.id,
         node: post
       })),
@@ -39,13 +41,5 @@ const posts = async (obj: any) => {
     } 
 }
 
-const findPost = async (obj: any) => {
-try{
-    return await Post .findById({_id: obj.postId})
-}catch(error){
-  return error
-} 
-}
-
-export default { posts, findPost }
+export default { posts }
 
