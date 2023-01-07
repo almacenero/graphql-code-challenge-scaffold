@@ -5,6 +5,7 @@ const expressPlayground = require('graphql-playground-middleware-express')
   .default
 import fs from 'fs';
 import queries from './resolvers/Queries';
+import mutations from './resolvers/Mutations'
 
 const schemaString = fs.readFileSync('./src/schemas/schema.graphql', 'utf8');
 
@@ -21,6 +22,7 @@ const schema = buildSchema(schemaString);
 
 const rootValue = {
   ...queries,
+  ...mutations
 };
 
 app.use('/graphql', graphqlHTTP({

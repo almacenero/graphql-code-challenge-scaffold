@@ -1,17 +1,19 @@
-type Query {
-    posts(page: Int): PostConnection!
-}
-
 type Post {
-   id: String!
+   id: String
    title: String
    body: String
    comments: [Comment]
 }
 
 type Comment {
-   id: String!
+   id: String
    name: String
+   email: String
+   body: String
+}
+
+input CommentInput {
+   name: String!
    email: String
    body: String
 }
@@ -30,4 +32,12 @@ type PostEdge {
 type PageInfo {
   hasNextPage: Boolean!
   endCursor: String
+}
+
+type Query {
+   posts(page: Int): PostConnection!
+}
+
+type Mutation {
+  newComment(PostId: String! comment: CommentInput!): Comment! 
 }
