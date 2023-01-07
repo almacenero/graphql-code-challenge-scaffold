@@ -19,11 +19,28 @@ const newComment = async (obj: any) => {
 
        await post?.save()
        await commentItem.save()
-       
+
        return commentItem
    }catch(error){
        return error
    }
 }
 
-export default { newComment}
+const newPost = async (obj: any) => {
+    console.log("obj--->", obj)
+    const post: PostItem = obj.post
+   try {
+    const postItem: any = await new Post({
+        title: post.title,
+        body: post.body,
+       })
+    
+   await postItem.save()
+   
+   return postItem
+   }catch(error){
+    return error
+   }
+ }
+
+export default { newComment, newPost}

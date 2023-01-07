@@ -12,13 +12,6 @@ type Comment {
    body: String
 }
 
-input CommentInput {
-   name: String!
-   email: String
-   body: String
-}
-
-
 type PostConnection {
   edges: [PostEdge]!
   pageInfo: PageInfo!
@@ -34,10 +27,22 @@ type PageInfo {
   endCursor: String
 }
 
+input CommentInput {
+   name: String!
+   email: String
+   body: String
+}
+
+input PostInput {
+   title: String
+   body: String
+}
+
 type Query {
    posts(page: Int): PostConnection!
 }
 
 type Mutation {
   newComment(PostId: String! comment: CommentInput!): Comment! 
+  newPost(post: PostInput!): Post!
 }
