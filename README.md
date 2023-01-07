@@ -1,7 +1,8 @@
 # graphql-code-challenge-scaffold
 
-# New packages
+## New packages
 
-graphql-playground-middleware-express: For better handling of queries and mutations
-
-joi: For validations
+| Name      | Descriptión                   |
+| ----------- | ----------------------------- |
+| graphql-playground-middleware-express   | For better handling of queries and mutations   |
+| joi   | For validations   |
