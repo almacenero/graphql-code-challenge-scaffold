@@ -4,5 +4,5 @@
 
 | Name      | Descriptión                   |
 | ----------- | ----------------------------- |
-| graphql-playground-middleware-express   | For better handling of queries and mutations   |
-| joi   | For validations   |
+| graphql-playground-middleware-express   | Express middleware to expose an endpoint for the GraphQL Playground   |
+| joi   | schema description language and data validator for JavaScript   |
