@@ -39,5 +39,13 @@ const posts = async (obj: any) => {
     } 
 }
 
-export default { posts}
+const findPost = async (obj: any) => {
+try{
+    return await Post .findById({_id: obj.postId})
+}catch(error){
+  return error
+} 
+}
+
+export default { posts, findPost }
 
